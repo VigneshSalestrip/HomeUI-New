@@ -1,30 +1,5 @@
 ({  //Initialize 
     doinit : function(component, event, helper) {
-
-        /*
-         var number = component.get("c.getReimburse");
-        console.log("Enter 1");
-        
-        number.setCallback(this, function(response) 
-                           {
-                               component.set("v.totalreimburse", response.getReturnValue());
-                           });
-        console.log("Enter 2");
-        $A.enqueueAction(number);
-        
-        var getamount=component.get("c.getReimburseAmount");
-        console.log("Enter 3");
-        getamount.setCallback(this, function(response){
-            var amountCon= response.getReturnValue();
-            var convAmount=$A.localizationService.formatCurrency(amountCon);
-           
-                component.set("v.totalreimburseamount", convAmount);
-            
-        });
-        $A.enqueueAction(getamount);
-        console.log("Enter 4");
-         */
-
         //Get Current Month Expense Reimbursed Count 
         var cmonth=component.get("c.getrCurrentMonth");
         cmonth.setCallback(this, function(response) 

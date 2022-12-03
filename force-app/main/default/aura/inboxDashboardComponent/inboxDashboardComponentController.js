@@ -324,20 +324,6 @@
 
 	   navService.navigate(pageReference);
     }, 
-    /*
-	creditImport: function(component, event, helper) {
-		var navService = component.find("navService"); 
-	 var pageReference = {
-		type: 'standard__navItemPage',
-		attributes: {
-			apiName:'salestrip__ExpenseImport'
-		}
-	   
-	   };
-
-	   navService.navigate(pageReference);
-	},
-    */
     // * * Update Notifications badge * *
     //Initial page load datas
     doinit: function(component, event, helper){
@@ -381,8 +367,5 @@
 
         });
         $A.enqueueAction(action1);
-
-
-
     }
 })
