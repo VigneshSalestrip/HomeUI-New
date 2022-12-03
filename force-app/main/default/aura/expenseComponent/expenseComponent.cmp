@@ -13,7 +13,7 @@
     <lightning:card>
         <aura:set attribute="title">
             <lightning:icon iconName="custom:custom17" class="slds-p-horizontal_small" size="medium"/> 
-            {! v.title }
+         {! v.title }
         </aura:set>
         <!--
          <p class="slds-p-horizontal_medium">Total Expense Record :  {!v.totalexpenses} </p>  <br/>
