@@ -1,0 +1,126 @@
+<aura:component controller="homeUIControllerApex" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="draft" type="integer" /> <!--Count Draft Records-->
+    <aura:attribute name="pendingapp" type="integer" /> <!--Pending Approval Records Count-->
+    <aura:attribute name="exprdraft" type="integer" /> <!--Expense Report Draft status Count-->
+    <aura:attribute name="exprpendingapp" type="integer" /> <!--Expense Report Pending Approval status Count-->
+    <aura:attribute name="pendingreim" type="integer" /> <!--Expense Pending Reimbursemet status Count-->
+    <lightning:navigation aura:id="navService" /> <!--Nagivation - Used in js Controller-->
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}" /> <!--Initial Page load data-->
+   <lightning:card>
+    <div class="demo-only ">
+        <nav class="slds-nav-vertical" aria-label="Sub page">
+          <div class="slds-nav-vertical__section"> <!--Vertical Navigation-->
+            <h2 id="entity-header" class="slds-nav-vertical__title">Inbox</h2> <!--Title - Inbox-->
+            <ul aria-describedby="entity-header">
+              <li class="slds-nav-vertical__item">
+                <a onclick="{!c.draftitem}" class="slds-nav-vertical__action" >
+                    
+                    <lightning:icon  iconName="standard:drafts" alternativeText="draft" size="small"></lightning:icon><strong class="slds-m-left--x-small">Expense - Draft</strong>
+
+                  <span class="slds-badge slds-col_bump-left">
+                    <span class="slds-assistive-text">:</span>{!v.draft}
+                    <span class="slds-assistive-text">Expense_Draft</span>
+                  </span>
+                
+                </a>
+              </li>
+              <li class="slds-nav-vertical__item">
+                <a onclick="{!c.pendingitem}" class="slds-nav-vertical__action">
+                    
+                    <lightning:icon  iconName="standard:approval" alternativeText="pendingApproval" size="small" title="x-small"></lightning:icon><strong class="slds-m-left--x-small">Expense - Pending Approval</strong>
+
+                  <span class="slds-badge slds-col_bump-left">
+                    <span class="slds-assistive-text">:</span>{!v.pendingapp}
+                    <span class="slds-assistive-text">Expense_Pending_Approval</span>
+                  </span>
+                
+                </a>
+              </li>
+              <li class="slds-nav-vertical__item">
+                <a onclick="{!c.reportdraft}" class="slds-nav-vertical__action" aria-current="none">
+                    
+                    <lightning:icon  iconName="standard:crypto_category_wallet_group" alternativeText="expensereportDraft" size="small" title="x-small"></lightning:icon><strong class="slds-m-left--x-small">Expense Report - Draft</strong> 
+
+                  <span class="slds-badge slds-col_bump-left">
+                    <span class="slds-assistive-text">:</span>{!v.exprdraft}
+                    <span class="slds-assistive-text">Expense_Report_Draft</span>
+                  </span>
+                
+                </a>
+              </li>
+              <li class="slds-nav-vertical__item">
+                <a onclick="{!c.reportpending}" class="slds-nav-vertical__action" aria-current="none">
+                    
+                    <lightning:icon  iconName="standard:product_required" alternativeText="reportpendingApproval" size="small" title="x-small"></lightning:icon><strong class="slds-m-left--x-small">Expense Report - Pending Approval</strong> 
+
+                  <span class="slds-badge slds-col_bump-left">
+                    <span class="slds-assistive-text">:</span>{!v.exprpendingapp}
+                    <span class="slds-assistive-text">Expense_Report_Pending_Approval</span>
+                  </span>
+                
+                </a>
+              </li>
+              <li class="slds-nav-vertical__item">
+                <a onclick="{!c.pendingreimbursement}" class="slds-nav-vertical__action" aria-current="none">
+                    
+                    <lightning:icon  iconName="custom:custom44" alternativeText="pendingreimbursement" size="small" title="x-small"></lightning:icon><strong class="slds-m-left--x-small">Expense - Pending Reimbursement</strong> 
+
+                  <span class="slds-badge slds-col_bump-left">
+                    <span class="slds-assistive-text">:</span>{!v.pendingreim}
+                    <span class="slds-assistive-text">Expense Pending Reimbursement</span>
+                  </span>
+                
+                </a>
+              </li>
+              <h2 id="entity-header" class="slds-nav-vertical__title">Dashboard</h2>
+              <li class="slds-nav-vertical__item">
+                <a onclick="{!c.reimburseditem}" class="slds-nav-vertical__action">
+                    <lightning:icon iconName="standard:partner_marketing_budget" size="small"></lightning:icon> <strong class="slds-m-left--x-small">Reimbursed</strong>
+                    <span class="slds-badge slds-col_bump-left">
+                        <lightning:icon iconName="utility:new_window" size="x-small"></lightning:icon>
+                       
+                      </span>
+                </a>
+              </li>
+              <li class="slds-nav-vertical__item">
+                <a onclick="{!c.receiptitem}" class="slds-nav-vertical__action">
+                    <lightning:icon iconName="standard:read_receipts" size="small"></lightning:icon> <strong class="slds-m-left--x-small">Receipt Unattached</strong>
+                    <span class="slds-badge slds-col_bump-left">
+                        <lightning:icon iconName="utility:new_window" size="x-small"></lightning:icon>
+                       
+                      </span>
+                </a>
+              </li>
+              <li class="slds-nav-vertical__item">
+                <a onclick="{!c.cardunmapped}" class="slds-nav-vertical__action">
+                    <lightning:icon iconName="standard:product_transfer_state" size="small"></lightning:icon> <strong class="slds-m-left--x-small">Card Unmapped Transactions</strong>
+                    <span class="slds-badge slds-col_bump-left">
+                        <lightning:icon iconName="utility:new_window" size="x-small"></lightning:icon>
+                       
+                      </span>
+                </a>
+              </li>
+              <li class="slds-nav-vertical__item">
+                <a onclick="{!c.bulkexpense}" class="slds-nav-vertical__action">
+                    <lightning:icon iconName="custom:custom15" size="small"></lightning:icon> <strong class="slds-m-left--x-small">Bulk Expense Approval</strong>
+                    <span class="slds-badge slds-col_bump-left">
+                        <lightning:icon iconName="utility:new_window" size="x-small"></lightning:icon>
+                       
+                      </span>
+                </a>
+              </li>
+              <li class="slds-nav-vertical__item">
+                <a onclick="{!c.reviewmy}" class="slds-nav-vertical__action">
+                    <lightning:icon iconName="standard:user_role" size="small"></lightning:icon> <strong class="slds-m-left--x-small">Review my Expenses</strong>
+                    <span class="slds-badge slds-col_bump-left">
+                        <lightning:icon iconName="utility:new_window" size="x-small"></lightning:icon>
+                       
+                      </span>
+                </a>
+              </li>
+              </ul>
+              </div>
+             </nav>
+          </div>
+     </lightning:card>
+</aura:component>

@@ -1,0 +1,36 @@
+<aura:component controller="homeUIControllerApex" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<aura:attribute name="title" type="String" default=" Reimbursement"/>  <!--title (Reimbursement)-->
+    <aura:attribute name="totalreimburse" type="integer" default="3"/> <!--All Reimbursed Expense Records in Number-->
+    <aura:attribute name="totalreimburseamount" type="decimal" default="1000" /> <!--All Reimbursed Amount -->
+    <aura:attribute name="currentMonthRecord" type="integer" /> <!--Reimbursed this Month-->
+    <aura:attribute name="lastMonthRecord" type="decimal" /> <!--Reimbursed last Month-->
+    <aura:attribute name="currentMonthAmount" type="decimal" /> <!--Reimbursed this Month-->
+    <aura:attribute name="lastMonthAmount" type="decimal" /> <!--Reimbursed last Month-->
+    <aura:attribute name="setBoolean" type="boolean" /> <!--Comparison Positive & Negative Records Count-->
+    <aura:attribute name="amountBoolean" type="boolean" /> <!--Comparison Positive & Negative Amount -->
+    <aura:handler name="init" value="{!this}" action="{!c.doinit}" />  <!--Initial page load data-->
+    <div class="custom">
+    <lightning:card>
+        <aura:set attribute="title">
+            <lightning:icon iconName="custom:custom41" class="slds-p-horizontal_small" size="medium"/> <strong>{!v.title }</strong>  
+        </aura:set>
+       <!--
+        <p class="slds-p-horizontal_medium" >Total Reimbursement Records:  {!v.totalreimburse} </p>  <br/>
+        <p class="slds-p-horizontal_medium">Total Reimbursement Amount : {!v.totalreimburseamount} </p> <br/>
+        -->
+        <aura:if isTrue="{!v.setBoolean}">
+            <p class="slds-p-horizontal_medium"># Reimbursed this month: {!v.currentMonthRecord} ( <lightning:icon iconName="utility:arrowup" class="green" size="x-small" alternativeText="Trending down"/> {!v.lastMonthRecord})</p>  <br/>
+           <aura:set attribute="else">
+            <p class="slds-p-horizontal_medium"># Reimbursed this month: {!v.currentMonthRecord} ( <lightning:icon iconName="utility:arrowdown" class="red" size="x-small" alternativeText="Trending down"/> {!v.lastMonthRecord})</p>  <br/>
+           </aura:set>
+        </aura:if>
+        <aura:if isTrue="{!v.amountBoolean}">
+            <p class="slds-p-horizontal_medium"> Reimbursement Amount this month : {!v.currentMonthAmount} (<lightning:icon iconName="utility:arrowup" class="green" size="x-small" alternativeText="Trending down"/> {!v.lastMonthAmount})</p>  <br/>
+            <aura:set attribute="else">
+            <p class="slds-p-horizontal_medium"> Reimbursement Amount this month : {!v.currentMonthAmount} (<lightning:icon iconName="utility:arrowdown" class="red" size="x-small" alternativeText="Trending down"/> {!v.lastMonthAmount})</p>  
+            </aura:set>
+            
+        </aura:if>
+    </lightning:card>
+  </div>
+</aura:component>
