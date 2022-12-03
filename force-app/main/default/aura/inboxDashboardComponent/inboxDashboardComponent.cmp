@@ -32,44 +32,34 @@
                   <span class="slds-badge slds-col_bump-left">
                     <span class="slds-assistive-text">:</span>{!v.pendingapp}
                     <span class="slds-assistive-text">Expense_Pending_Approval</span>
-                  </span>
-                
+                  </span>                
                 </a>
               </li>
               <li class="slds-nav-vertical__item">
-                <a onclick="{!c.reportdraft}" class="slds-nav-vertical__action" aria-current="none">
-                    
+                <a onclick="{!c.reportdraft}" class="slds-nav-vertical__action" aria-current="none">                    
                     <lightning:icon  iconName="standard:crypto_category_wallet_group" alternativeText="expensereportDraft" size="small" title="x-small"></lightning:icon><strong class="slds-m-left--x-small">Expense Report - Draft</strong> 
-
                   <span class="slds-badge slds-col_bump-left">
                     <span class="slds-assistive-text">:</span>{!v.exprdraft}
                     <span class="slds-assistive-text">Expense_Report_Draft</span>
                   </span>
-                
                 </a>
               </li>
               <li class="slds-nav-vertical__item">
-                <a onclick="{!c.reportpending}" class="slds-nav-vertical__action" aria-current="none">
-                    
+                <a onclick="{!c.reportpending}" class="slds-nav-vertical__action" aria-current="none">  
                     <lightning:icon  iconName="standard:product_required" alternativeText="reportpendingApproval" size="small" title="x-small"></lightning:icon><strong class="slds-m-left--x-small">Expense Report - Pending Approval</strong> 
-
                   <span class="slds-badge slds-col_bump-left">
                     <span class="slds-assistive-text">:</span>{!v.exprpendingapp}
                     <span class="slds-assistive-text">Expense_Report_Pending_Approval</span>
                   </span>
-                
                 </a>
               </li>
               <li class="slds-nav-vertical__item">
                 <a onclick="{!c.pendingreimbursement}" class="slds-nav-vertical__action" aria-current="none">
-                    
                     <lightning:icon  iconName="custom:custom44" alternativeText="pendingreimbursement" size="small" title="x-small"></lightning:icon><strong class="slds-m-left--x-small">Expense - Pending Reimbursement</strong> 
-
                   <span class="slds-badge slds-col_bump-left">
                     <span class="slds-assistive-text">:</span>{!v.pendingreim}
                     <span class="slds-assistive-text">Expense Pending Reimbursement</span>
                   </span>
-                
                 </a>
               </li>
               <h2 id="entity-header" class="slds-nav-vertical__title">Dashboard</h2>
@@ -78,8 +68,7 @@
                     <lightning:icon iconName="standard:partner_marketing_budget" size="small"></lightning:icon> <strong class="slds-m-left--x-small">Reimbursed</strong>
                     <span class="slds-badge slds-col_bump-left">
                         <lightning:icon iconName="utility:new_window" size="x-small"></lightning:icon>
-                       
-                      </span>
+                    </span>
                 </a>
               </li>
               <li class="slds-nav-vertical__item">
@@ -87,16 +76,14 @@
                     <lightning:icon iconName="standard:read_receipts" size="small"></lightning:icon> <strong class="slds-m-left--x-small">Receipt Unattached</strong>
                     <span class="slds-badge slds-col_bump-left">
                         <lightning:icon iconName="utility:new_window" size="x-small"></lightning:icon>
-                       
-                      </span>
+                    </span>
                 </a>
               </li>
               <li class="slds-nav-vertical__item">
                 <a onclick="{!c.cardunmapped}" class="slds-nav-vertical__action">
                     <lightning:icon iconName="standard:product_transfer_state" size="small"></lightning:icon> <strong class="slds-m-left--x-small">Card Unmapped Transactions</strong>
                     <span class="slds-badge slds-col_bump-left">
-                        <lightning:icon iconName="utility:new_window" size="x-small"></lightning:icon>
-                       
+                        <lightning:icon iconName="utility:new_window" size="x-small"></lightning:icon>                     
                       </span>
                 </a>
               </li>
